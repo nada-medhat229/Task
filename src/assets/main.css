@@ -1,0 +1,53 @@
+@font-face {
+  font-family: LeagueSpartan;
+  src: url('./LeagueSpartan-VariableFont_wght.ttf') format('woff2')
+}
+body{
+  font-family: LeagueSpartan;
+  overflow-x:hidden !important;
+}
+#app{
+  overflow: hidden !important;
+}
+:root {
+  --container-max-width-sm: 640px;
+  --container-max-width-md: 820px;
+  --container-max-width-lg: 1000px;
+  --container-max-width-xl: 1240px;
+  --container-max-width-xxl: 1400px;
+}
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: var(--container-max-width-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--container-max-width-md);
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: var(--container-max-width-lg);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--container-max-width-xl);
+  }
+}
+
+@media (min-width: 1420px) {
+  .container {
+    max-width: var(--container-max-width-xxl);
+  }
+}
