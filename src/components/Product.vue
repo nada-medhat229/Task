@@ -29,6 +29,8 @@
             <v-row>
           <v-col
           cols="6"
+
+          
             md="3"
             v-for="(product, idx) in group"
             :key="idx"
