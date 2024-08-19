@@ -28,12 +28,10 @@
 
         <!-- Logo and Contacts Column -->
         <v-col cols="12" md="3" class="d-flex flex-column align-center justify-center">
-            <!-- <img
-            :src="image"
-            alt="Logo"
-            max-width="150"
-            class="mb-4"
-          /> -->
+           
+        <img src="@/assets/images/Logo.svg" alt="logo"   max-width="150"
+        class="mb-4" />
+
 </v-col>
         <v-col cols="12" md="2" >
                 <h3 class="footer-title">Contacts</h3>
@@ -72,7 +70,6 @@
   </footer>
 </template>
 <script setup>
-// import image from "@/assets/images/logo.svg"
 </script>
 <style>
 footer{
