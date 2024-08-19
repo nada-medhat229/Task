@@ -6,7 +6,7 @@
       <video
         v-if="videoPlaying"
         ref="videoElement"
-        src="../assets/images/vid.mp4"
+        src="@/assets/images/vid.mp4"
         class="cover-video"
         autoplay
         muted
@@ -26,7 +26,7 @@
     <v-col cols="12" sm="4" class="p-0">
       <img
         class="headerimg"
-        src="../assets/images/header.svg"
+        src="@/assets/images/header.svg"
         alt="headerimg"
       />
     </v-col>
