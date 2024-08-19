@@ -3,7 +3,8 @@
     <v-row align="center" justify="space-between" class="ma-auto mx-md-5 mx-1 px-md-5 px-1">
       <!-- Logo -->
       <v-col cols="7" sm="auto">
-        <img src="../assets/images/Logo.svg" alt="logo" class="w-100" />
+        <img src="@/assets/images/Logo.svg" alt="logo" class="w-100" />
+        
       </v-col>
 
       <!-- Mobile Menu Button -->
@@ -50,7 +51,6 @@
 
       <!-- Social Media Icons -->
       <v-col cols="auto" class="me-4">
-        <img src="../assets/images/" alt="">
         <v-icon>mdi-snapchat</v-icon>
         <v-icon>mdi-instagram</v-icon>
         <v-icon>mdi-facebook</v-icon>
