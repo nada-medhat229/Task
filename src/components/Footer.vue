@@ -72,7 +72,7 @@
   </footer>
 </template>
 <script setup>
-import image from "@/assets/images/logo.svg"
+// import image from "@/assets/images/logo.svg"
 </script>
 <style>
 footer{
