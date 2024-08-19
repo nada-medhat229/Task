@@ -29,7 +29,7 @@
         <!-- Logo and Contacts Column -->
         <v-col cols="12" md="3" class="d-flex flex-column align-center justify-center">
             <img
-            src="@/assets/images/logo.svg"
+            src="../../src/assets/images/logo.svg"
             alt="Logo"
             max-width="150"
             class="mb-4"
