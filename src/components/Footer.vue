@@ -28,12 +28,12 @@
 
         <!-- Logo and Contacts Column -->
         <v-col cols="12" md="3" class="d-flex flex-column align-center justify-center">
-            <img
+            <!-- <img
             :src="image"
             alt="Logo"
             max-width="150"
             class="mb-4"
-          />
+          /> -->
 </v-col>
         <v-col cols="12" md="2" >
                 <h3 class="footer-title">Contacts</h3>
