@@ -21,7 +21,7 @@
             <v-list-item>Terms & Conditions</v-list-item>
             <v-list-item>Privacy policy</v-list-item>
           </v-list>
-          
+
             </div>
        
         </v-col>
@@ -36,7 +36,6 @@
           />
 </v-col>
         <v-col cols="12" md="2" >
-
                 <h3 class="footer-title">Contacts</h3>
                 <v-list dense class="bg-transparent">
             <v-list-item>00966 444 673 56</v-list-item>
