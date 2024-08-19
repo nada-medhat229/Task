@@ -29,7 +29,7 @@
         <!-- Logo and Contacts Column -->
         <v-col cols="12" md="3" class="d-flex flex-column align-center justify-center">
             <img
-            src="../../src/assets/images/logo.svg"
+            :src="image"
             alt="Logo"
             max-width="150"
             class="mb-4"
@@ -71,6 +71,9 @@
       </div>
   </footer>
 </template>
+<script setup>
+import image from "@/assets/images/logo.svg"
+</script>
 <style>
 footer{
     background: #DEEBF6;
