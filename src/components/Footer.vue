@@ -21,6 +21,7 @@
             <v-list-item>Terms & Conditions</v-list-item>
             <v-list-item>Privacy policy</v-list-item>
           </v-list>
+          
             </div>
        
         </v-col>
