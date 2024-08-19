@@ -156,12 +156,4 @@ const toggleLanguage = () => {
 .v-btn > .v-btn__overlay {
   opacity: 0 !important;
 }
-
-/* .text-decoration-underline {
-  text-decoration: underline !important;
-}
-
-.text-decoration-none {
-  text-decoration: none !important;
-} */
 </style>

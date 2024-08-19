@@ -44,4 +44,12 @@ padding: 0 0.1em;
 .scrolling-text span {
   font-weight: 600;
 }
+@media (max-width: 576px) {
+    .loop-text {
+font-size: 2rem;
+}
+.scrolling-text {
+padding: 30px 0;
+}
+}
 </style>

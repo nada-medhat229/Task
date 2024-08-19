@@ -2,7 +2,7 @@
   <section class="product-showcase">
     <v-row class="ma-auto mx-md-5 mx-1 px-md-5 px-1">
       <v-col class="text-center mb-6">
-        <img src="@/assets/images/Frame.svg" alt="frame" />
+        <img src="@/assets/images/Frame.svg" alt="frame" class="frame"/>
         <p class="textproduct">
           Goochie is a leading Chinese brand in permanent makeup, founded in
           1996. It offers a variety of devices and pigments to meet global
@@ -13,7 +13,7 @@
       </v-col>
     </v-row>
     <v-card class="cardproduct">
-        <h2 class="pb-5 px-4">
+        <h2 class="pb-5 px-md-4 px-2">
             Duogel Product Showcase
         </h2>
     <v-tabs v-model="activeTab">
@@ -29,8 +29,6 @@
             <v-row>
           <v-col
           cols="6"
-
-          
             md="3"
             v-for="(product, idx) in group"
             :key="idx"
@@ -42,7 +40,7 @@
       >    
               <img   :src="product.image" 
                 height="320"
-                class="w-100"
+                class="w-100 productimage"
            />
 
            <h3>
@@ -77,14 +75,14 @@ import image4 from '@/assets/images/barbie.webp.svg';
 const activeTab = ref(0); 
 const currentWindow = ref(0); 
 const products = ref([
-  { title: "Folia Transferowa Silver 01", image: image1 },
+  { title: "Folia Transfer Silver ", image: image1 },
   { title: "New Due Sugar Lemon", image: image2 },
   { title: "New Due Ombre Sponges", image: image3 },
-  { title: "Paint Gel 5g - 063 Barbie", image: image4 },
-  { title: "Folia Transferowa Silver 01", image: image1 },
+  { title: "Paint Gel 5g-063 Barbie", image: image4 },
+  { title: "Folia Transfer Silver ", image: image1 },
   { title: "New Due Sugar Lemon", image: image2 },
   { title: "New Due Ombre Sponges", image: image3 },
-  { title: "Paint Gel 5g - 063 Barbie", image: image4 },
+  { title: "Paint Gel 5g-063 Barbie", image: image4 },
 ]);
 
 // Data for categories
@@ -165,6 +163,48 @@ const prev = () => {
     width: 40px;
     height: 40px;
     margin: 0 4px;
+}
+@media (max-width: 768px) {
+ .product-showcase .productimage{
+    height: auto !important;
+ }
+ .product-showcase{
+    margin-top: 2rem;
+}
+}
+@media (max-width: 576px) {
+    .product-showcase .cardproduct {
+        padding: 30px 15px;}
+        .textproduct{
+    width: 100%;
+}
+.product-showcase .frame{
+    width: 225px;
+
+}
+.cardproduct h2{
+    font-size: 20px;
+}
+}
+@media (max-width: 396px) {
+  .product-showcase .v-card-text{
+    padding: 0;
+  }
+  .mastercard {
+    background: #F4F4F4;
+    padding: 5px;
+    border-radius: 18px;
+    margin-bottom: 0 !important;
+    text-align: center;
+  }
+  .mastercard h3{
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .product-showcase .v-btn--icon.v-btn--density-default.left_btn, .product-showcase .v-btn--icon.v-btn--density-default.right_btn {
+
+    margin-top: 35px;
+}
 }
 </style>
 <style>
