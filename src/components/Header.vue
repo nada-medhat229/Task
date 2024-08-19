@@ -84,7 +84,9 @@ onMounted(() => {
   }
   .headerimg {
     height: 350px;
-    width: 100%;
+    width: 100% !important;
+    object-fit: cover;
+
   }
 }
 </style>
