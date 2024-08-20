@@ -1,6 +1,5 @@
 <template>
   <v-row class="d-flex align-sm-center overflow-hidden align-content-stretch" style="margin-top: 50px">
-    <!-- Left Side - Video or Image -->
     <v-col cols="12" sm="4" class="p-0">
       <!-- Video only shown if videoPlaying is true -->
       <video
@@ -17,9 +16,9 @@
     <!-- Center Text -->
     <v-col cols="12" sm="4" class="text-center py-10">
       <h1 class="font-weight-medium textheader" style="font-size: 3rem">
-        Enhancing everything related to women's charm and allure is our mission.
+        {{ $t('Enhancing') }}
       </h1>
-      <button class="mt-4 btncontact">Contact us</button>
+      <button class="mt-4 btncontact">{{ $t('Contact') }}</button>
     </v-col>
 
     <!-- Right Side - Products Image -->
@@ -58,7 +57,7 @@ onMounted(() => {
 .cover-video {
   width: 100%;
   height: 760px;
-  object-fit: cover; /* Maintain aspect ratio while covering container */
+  object-fit: cover;
 }
 .btncontact {
   background: #deebf6;

@@ -216,6 +216,9 @@ const prev = () => {
   background: #83B7D7 !important;
   color: #fff;
 }
+[dir='rtl'] .product-showcase .v-btn--icon .v-icon {
+    transform: rotatey(0);
+}
 .product-showcase .v-btn--icon .v-icon {
     transform: rotatey(180deg);
 }
