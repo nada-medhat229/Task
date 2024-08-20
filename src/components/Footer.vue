@@ -49,8 +49,8 @@
       <v-col cols="12" md="2">
         <h3 class="footer-title">{{ $t('Contacts') }}</h3>
         <v-list dense class="bg-transparent">
-          <v-list-item>00966 444 673 56</v-list-item>
-          <v-list-item>support@womansecrets.com</v-list-item>
+          <v-list-item class="px-0">00966 444 673 56</v-list-item>
+          <v-list-item class="px-0">support@womansecrets.com</v-list-item>
         </v-list>
 
         <div>
