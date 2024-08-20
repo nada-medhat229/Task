@@ -51,9 +51,9 @@
 
       <!-- Social Media Icons -->
       <v-col cols="auto" class="me-4">
-        <v-icon>mdi-snapchat</v-icon>
-        <v-icon>mdi-instagram</v-icon>
-        <v-icon>mdi-facebook</v-icon>
+        <v-icon class="mx-1">mdi-snapchat</v-icon>
+        <v-icon class="mx-1">mdi-instagram</v-icon>
+        <v-icon class="mx-1">mdi-facebook</v-icon>
       </v-col>
     </v-row>
 

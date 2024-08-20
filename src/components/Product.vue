@@ -130,7 +130,7 @@ const prev = () => {
 .product-showcase {
   background-color: #e3f2fd;
   padding: 40px 20px;
-  margin-top: 10rem;
+  margin-top: 8rem;
 }
 .textproduct {
   width: 65%;
