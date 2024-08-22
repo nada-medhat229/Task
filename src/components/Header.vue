@@ -1,5 +1,5 @@
 <template>
-  <v-row class="d-flex align-sm-center overflow-hidden align-content-stretch" style="margin-top: 50px" >
+  <v-row class="d-flex align-sm-center overflow-hidden align-content-stretch" style="margin-top: 50px" v-if="header">
     <v-col cols="12" sm="4" class="p-0">
       <!-- Video only shown if videoPlaying is true -->
       <video
