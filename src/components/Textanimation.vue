@@ -1,13 +1,34 @@
 <template>
-    <section class="scrolling-text">
-    <p class="loop-text">be the best you can be.</p>
-    <span class="loop-text">be the best you can be.</span>
-    <p class="loop-text">be the best you can be.</p>
-    <span class="loop-text">be the best you can be.</span>
-   
+    <section class="scrolling-text" v-if="contact">
+    <p class="loop-text">{{ contact.advertisement }}</p>
+    <p class="loop-text">{{ contact.advertisement }}</p>
+    <p class="loop-text">{{ contact.advertisement }}</p>
 </section>
   
 </template>
+<script setup>
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+// Access the Vuex store
+const store = useStore();
+
+// Use Vuex getters as computed properties
+const data = computed(() => store.getters.getData);
+
+// Safely access the 'about' data, ensuring it only returns if data is valid
+const contact = computed(() => {
+  if (data.value && data.value.data && data.value.data.contact) {    
+    return data.value.data.contact;
+  }
+  return null;
+});
+
+// Fetch data on component mount
+onMounted(() => {
+  store.dispatch('fetchData');
+});
+</script>
 <style scoped>
  .loop-text {
          animation: loopText 5s infinite linear;      
@@ -41,7 +62,7 @@ font-size: 3.3rem;
 text-transform: uppercase;
 padding: 0 0.1em;
 }
-.scrolling-text span {
+.loop-text:nth-child(even) {
   font-weight: 600;
 }
 @media (max-width: 576px) {

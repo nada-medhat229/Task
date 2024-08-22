@@ -11,29 +11,55 @@
     <!-- Right Content Column -->
     <v-col cols="12" sm="6" class="px-5">
       <div class="about-content">
-        <h1 class="heading">{{ $t('About') }}</h1>
+        <h1 class="heading">
+{{ about?about.title:'' }}
+        </h1>
         <p class="mb-xl-5 mb-1">
-          {{ $t("From_Ancient") }}
+          {{ about?about.desc:'' }}
         </p>
         <h2 class="font-weight-bold pt-xl-5 pt-1 values-title">
           {{ $t("Values") }}
         </h2>
-        <v-list dense>
-          <v-list-item class="value-item">{{
-            $t("Sustainability")
-          }}</v-list-item>
-          <v-list-item class="value-item">{{
+        <v-list dense v-if="about">
+          <v-list-item class="value-item" v-for="(item, index) in about.values" :key="index">{{ item.title }}</v-list-item>
+          <!-- <v-list-item class="value-item">{{
             $t("WomenEmpowerment")
           }}</v-list-item>
           <v-list-item class="value-item">{{ $t("Innovation") }}</v-list-item>
           <v-list-item class="value-item"
             >{{ $t("ExcellentCustomer") }}
-          </v-list-item>
+          </v-list-item> -->
         </v-list>
       </div>
     </v-col>
   </v-row>
 </template>
+
+
+<script setup>
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+// Access the Vuex store
+const store = useStore();
+
+// Use Vuex getters as computed properties
+const data = computed(() => store.getters.getData);
+
+// Safely access the 'about' data, ensuring it only returns if data is valid
+const about = computed(() => {
+  if (data.value && data.value.data && data.value.data.about) {
+    return data.value.data.about;
+  }
+  return null;
+});
+
+// Fetch data on component mount
+onMounted(() => {
+  store.dispatch('fetchData');
+});
+</script>
+
 <style scoped>
 .heading {
   letter-spacing: 0.2em;

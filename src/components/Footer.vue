@@ -1,5 +1,5 @@
 <template>
-  <footer padless class="pt-5">
+  <footer padless class="pt-5" v-if="footer">
     <v-row class="pb-5 ma-auto mx-md-5 mx-1 px-md-5 px-1">
       <!-- Informations Column -->
       <v-col cols="12" md="2">
@@ -40,7 +40,7 @@
         class="d-flex flex-column align-center justify-center"
       >
         <img
-          src="@/assets/images/Logo.svg"
+          :src="footer.logo"
           alt="logo"
           max-width="150"
           class="mb-4"
@@ -49,14 +49,22 @@
       <v-col cols="12" md="2">
         <h3 class="footer-title">{{ $t('Contacts') }}</h3>
         <v-list dense class="bg-transparent">
-          <v-list-item class="px-0">00966 444 673 56</v-list-item>
-          <v-list-item class="px-0">support@womansecrets.com</v-list-item>
+          <v-list-item class="px-0">{{ footer.phone }}</v-list-item>
+          <v-list-item class="px-0">{{ footer.email }}</v-list-item>
         </v-list>
 
         <div>
+        
+            <a :href="footer.socials.snapchat" class="text-black" target="_blank">
           <v-icon large class="mx-2">mdi-snapchat</v-icon>
-          <v-icon large class="mx-2">mdi-instagram</v-icon>
-          <v-icon large class="mx-2">mdi-facebook</v-icon>
+
+            </a>
+            <a :href="footer.socials.instagram" class="text-black" target="_blank">
+              <v-icon large class="mx-2">mdi-instagram</v-icon>
+            </a>
+            <a :href="footer.socials.facebook" class="text-black" target="_blank">
+              <v-icon large class="mx-2">mdi-facebook</v-icon>
+            </a>
         </div>
       </v-col>
 
@@ -81,7 +89,8 @@
   </footer>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref , computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
 
 const navItems = ref([
   { text: "Home", to: "/" },
@@ -95,6 +104,23 @@ const footItems = ref([
   { text: "TermsConditions", to: "/terms" },
   { text: "Privacypolicy", to: "/privacy" },
 ]);
+// Access the Vuex store
+const store = useStore();
+
+// Use Vuex getters as computed properties
+const data = computed(() => store.getters.getData);
+
+// Safely access the 'about' data, ensuring it only returns if data is valid
+const footer = computed(() => {
+  if (data.value && data.value.data && data.value.data.footer) {    
+    return data.value.data.footer;
+  }
+  return null;
+});
+// Fetch data on component mount
+onMounted(() => {
+  store.dispatch('fetchData');
+});
 </script>
 <style>
 footer {

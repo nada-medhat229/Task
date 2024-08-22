@@ -1,14 +1,10 @@
 <template>
-  <section class="product-showcase">
-    <v-row class="ma-auto mx-md-5 mx-1 px-md-5 px-1">
+  <section class="product-showcase" v-if="brands" v-for="(brand, index) in brands" :key="index">
+    <v-row class="ma-auto mx-md-5 mx-1 px-md-5 px-1" >
       <v-col class="text-center mb-6">
-        <img src="@/assets/images/Frame.svg" alt="frame" class="frame"/>
+        <img :src="brand.img" alt="frame" class="frame"/>
         <p class="textproduct">
-          Goochie is a leading Chinese brand in permanent makeup, founded in
-          1996. It offers a variety of devices and pigments to meet global
-          market needs, with a wide network of agents in over 64 countries. The
-          brand focuses on providing high-quality products and professional,
-          safe services to users worldwide.
+         {{brand.desc}}
         </p>
       </v-col>
     </v-row>
@@ -17,8 +13,8 @@
             Duogel Product Showcase
         </h2>
     <v-tabs v-model="activeTab">
-      <v-tab v-for="(category, index) in categories" :key="index" :value="index">
-        {{ category }}
+      <v-tab v-for="(category, index) in brand.categories" :key="index" :value="index">
+        {{ category.title }}
       </v-tab>
     </v-tabs>
 
@@ -67,13 +63,32 @@
   </section>
 </template>
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed,onMounted } from 'vue';
+import { useStore } from 'vuex';
+
 import image1 from '@/assets/images/silver.webp.svg';
 import image2 from '@/assets/images/lemon.webp.svg';
 import image3 from '@/assets/images/new.webp.svg';
 import image4 from '@/assets/images/barbie.webp.svg';
 const activeTab = ref(0); 
 const currentWindow = ref(0); 
+const categories = ref([])
+
+// Access the Vuex store
+const store = useStore();
+
+// Use Vuex getters as computed properties
+const data = computed(() => store.getters.getData);
+
+// Safely access the 'about' data, ensuring it only returns if data is valid
+const brands = computed(() => {
+  if (data.value && data.value.data && data.value.data.brands) {
+    
+    return data.value.data.brands;
+  }
+  return null;
+});
+
 const products = ref([
   { title: "Folia Transfer Silver ", image: image1 },
   { title: "New Due Sugar Lemon", image: image2 },
@@ -86,17 +101,6 @@ const products = ref([
 ]);
 
 // Data for categories
-const categories = [
-  "Devices",
-  "UV Gel Nail Polishes",
-  "Nail Art",
-  "Accessories",
-  "UV Gels",
-  "Liquids / Preparations",
-  "Care",
-  "Disinfection / Hygiene",
-  "Acrylics",
-];
 
 // Computed property to group the products into sets of 4
 const groupedProducts = computed(() => {
@@ -123,6 +127,9 @@ const prev = () => {
     currentWindow.value = groupedProducts.value.length - 1; // Wrap around to the last window
   }
 };
+onMounted(() => {
+  store.dispatch('fetchData');
+});
 </script>
 
 

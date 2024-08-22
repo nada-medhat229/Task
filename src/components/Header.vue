@@ -1,11 +1,11 @@
 <template>
-  <v-row class="d-flex align-sm-center overflow-hidden align-content-stretch" style="margin-top: 50px">
+  <v-row class="d-flex align-sm-center overflow-hidden align-content-stretch" style="margin-top: 50px" >
     <v-col cols="12" sm="4" class="p-0">
       <!-- Video only shown if videoPlaying is true -->
       <video
         v-if="videoPlaying"
         ref="videoElement"
-        src="@/assets/images/vid.mp4"
+        :src="header?header.video:''"
         class="cover-video"
         autoplay
         muted
@@ -16,16 +16,16 @@
     <!-- Center Text -->
     <v-col cols="12" sm="4" class="text-center py-10">
       <h1 class="font-weight-medium textheader" style="font-size: 3rem">
-        {{ $t('Enhancing') }}
+        {{ header?header.desc:'' }}
       </h1>
-      <button class="mt-4 btncontact">{{ $t('Contact') }}</button>
+      <router-link class="mt-4 btncontact" :to="header?header.btn_link:''" >{{ header?header.btn_text:'' }}</router-link>
     </v-col>
 
     <!-- Right Side - Products Image -->
     <v-col cols="12" sm="4" class="p-0">
       <img
         class="headerimg"
-        src="@/assets/images/header.svg"
+        :src="header?header.img:''"
         alt="headerimg"
       />
     </v-col>
@@ -33,7 +33,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from "vue";
+import { ref, onMounted, nextTick, computed  } from "vue";
+import { useStore } from 'vuex';
+
+// Access the Vuex store
+const store = useStore();
+
+// Use Vuex getters as computed properties
+const data = computed(() => store.getters.getData);
 const videoElement = ref(null);
 const videoPlaying = ref(true); // Ensure videoPlaying is true for testing
 
@@ -47,9 +54,17 @@ const playVideo = async () => {
     console.error("Video element not found");
   }
 };
+const header = computed(() => {
+  if (data.value && data.value.data && data.value.data.header) {
+    return data.value.data.header;
+  }
+  return null;
+});
 
 onMounted(() => {
   playVideo();
+  store.dispatch('fetchData');
+
 });
 </script>
 
@@ -63,9 +78,11 @@ onMounted(() => {
   background: #deebf6;
   border-radius: 50px;
   box-shadow: none;
-  padding: 10px 35px;
+  padding: 15px 35px;
   text-transform: capitalize;
   font-weight: 500;
+  text-decoration: none;
+  color: black;
 }
 @media (max-width: 1200px) {
     .textheader {
